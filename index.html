@@ -25,7 +25,10 @@
           También, asegúrate de que la configuración <strong>APP_URL</strong> esté establecida
           correctamente con la URL de tu sitio web. Por ejemplo,
 <pre>
-<code>APP_URL=https://apierp.julioalmiro.com/api</code>
+<code>
+  FILESYSTEM_DRIVER=public
+  APP_URL=https://apierp.julioalmiro.com/api
+</code>
 </pre>
         </li>
       </ol>
@@ -111,6 +114,29 @@ Esto creará un enlace simbólico desde la carpeta public/storage hacia storage/
       <h3>Paso N°07: Compatibilidad al momento de traer los datos del menu del sistema</h3>
       <ol>
         <li> Si en el sistema muestra solo los modulos principales, dirìgitte  a <strong>system_modules/GetAccessModules.php</strong> una ves dentro comentrar el codigo activo y descomentar el codigo que esta comentado
+        </li>
+      </ol>
+      <h3>Paso N°08: Desactivar el modo de desarrollo en Laravel</h3>
+      <ol>
+        <li> cuando el sistema ya esta produccion lo recomendable es desactivar el modo de desarrollo o debug en Laravel, para la cual abre el archivo <strong>.env</strong> una ves dentro cambiar el codigo de true a false <br>
+<pre>
+<code>
+APP_DEBUG=false
+</code>
+</pre>
+        </li>
+      </ol>
+      <h3>Paso N°09: Activar los cors solo para el subDominio donde esta alojado la APP</h3>
+      <ol>
+        <li> Dirigite a  <strong>config/cors.php</strong> una dentro de ahi especificar que dominio podran acceder a la API <br>
+<pre>
+<code>
+'allowed_origins' => ['*'], //esto es el que biene por default
+
+//Debes de ponerlo así
+'allowed_origins' => ['https://test.jyasoftware.com'],
+</code>
+</pre>
         </li>
       </ol>
         </details>
